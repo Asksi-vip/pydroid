@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-    ndkVersion "21.4.7075588"
+    ndkVersion "25.2.9519653"
     defaultConfig {
         applicationId "com.rizk.pydroid"
         minSdkVersion 21
