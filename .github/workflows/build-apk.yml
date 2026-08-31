@@ -3,9 +3,10 @@ name: Build Android APK
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -33,3 +34,15 @@ jobs:
       with:
         name: app-debug-apk
         path: app/build/outputs/apk/debug/app-debug.apk
+
+    - name: Create Release APK & GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: app/build/outputs/apk/debug/app-debug.apk
+        tag_name: v1.0.0
+        name: "Pydroid App v1.0.0 (APK)"
+        body: "تم بناء التطبيق بنجاح عبر GitHub Actions! يمكنك تحميل ملف الـ APK المرفق."
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
