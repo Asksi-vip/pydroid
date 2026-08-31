@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-add_library(jep SHARED IMPORTED)
-set_target_properties(jep PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/jep.so)
-
 add_library(
         native-lib
         SHARED
@@ -15,5 +11,4 @@ find_library(
 
 target_link_libraries(
         native-lib
-        jep
         ${log-lib})

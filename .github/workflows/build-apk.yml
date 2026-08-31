@@ -22,14 +22,10 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
 
-    - name: Setup local.properties with SDK and NDK
-      run: |
-        echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
-        NDK_PATH=$(find /usr/local/lib/android/sdk/ndk -maxdepth 1 -mindepth 1 2>/dev/null | head -n 1)
-        if [ -n "$NDK_PATH" ]; then
-          echo "ndk.dir=$NDK_PATH" >> local.properties
-        fi
-        cat local.properties
+    - name: Set up Android SDK & NDK 21
+      uses: android-actions/setup-android@v3
+      with:
+        packages: 'ndk;21.4.7075588'
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew

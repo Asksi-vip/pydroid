@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    ndkVersion "21.4.7075588"
     defaultConfig {
         applicationId "com.rizk.pydroid"
         minSdkVersion 21
@@ -9,9 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk {
-            abiFilters 'x86_64'
-        }
         externalNativeBuild {
             cmake {
                 cppFlags "-frtti -fexceptions"
